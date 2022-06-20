@@ -1,0 +1,7 @@
+Partie react
+https://create-react-app.dev/docs/running-tests/
+
+
+Guide pour tester Node.js + Express
+JEST (Plus complet ici): https://dev.to/nedsoft/testing-nodejs-express-api-with-jest-and-supertest-1km6
+Mocha, etc..: https://alexanderpaterson.com/posts/how-to-start-unit-testing-your-express-apps

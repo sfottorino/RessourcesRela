@@ -1,0 +1,28 @@
+version: "2.2"
+services:
+  db:
+    build: ./db
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: ressources_relationnelle
+    restart: always
+    ports:
+     - "33006:3306"
+  back:
+    build: ./back
+    environment:
+      MYSQL_DATABASE: ressources_relationnelle
+      MYSQL_USER: root
+      MYSQL_PASSWORD: password
+      MYSQL_HOST: db
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    restart: on-failure
+  front:
+    build: ./front
+    ports:
+      - "5001:80"
+    depends_on:
+      - back
