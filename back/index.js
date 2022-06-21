@@ -71,7 +71,7 @@ app.get('/users/insert/:lastname/:fisrtname/:email/:password', (req, res) => {
 
 // connect user
 app.get('/users/connect/:email/:password', (req, res) => {
-  console.log(req.params)
+  //console.log(req.params)
   var sql = "SELECT lastname, firstname, email FROM user where email='"+req.params.email+"' and password=SHA1('"+req.params.password+"')";
   connection.query(sql, function (err, result) {
     console.log(result);
