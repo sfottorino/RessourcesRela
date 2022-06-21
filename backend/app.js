@@ -2,11 +2,16 @@ const express = require('express');
 const db = require('./models/index');
 const app=express();
 const userRoutes = require('./routes/user');
+const bp = require('body-parser');
+
+app.use(bp.json());
+app.use(bp.urlencoded({ extended: true }));
 
 
 (async () => {
-  await db.sequelize.sync({ force: true });
+  await db.sequelize.sync();
 })();
+
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');

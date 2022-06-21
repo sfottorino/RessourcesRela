@@ -1,4 +1,5 @@
 import { Formik } from 'formik';
+import * as axios from 'axios';
 
 const { Component } = require("react");
 
@@ -6,9 +7,14 @@ const { Component } = require("react");
 class login extends Component{
 
     submit = (values, actions) =>{
-        // console.log(values);
-        // console.log(actions);
-        
+        axios.post('http://127.0.0.1:5001/add/user',JSON.stringify({firstName:'Simon', lastName:'Fottorino', email:'simon.fottorino@gmail.com', password:'testtest'}))
+        .then(response => {
+            console.log(response);
+        })
+        .catch( err => { 
+            console.log(err.response.status);
+            console.log(err.response.data.error);
+        })
         actions.setSubmitting(false);
     }
 
@@ -25,7 +31,7 @@ class login extends Component{
         return(
             <Formik
                 onSubmit={ this.submit }
-                initialValues={ {name: '', PW:''} }
+                initialValues={ {mail: '', PW:''} }
                 validate={ this.validate }
             >
                 { ({
