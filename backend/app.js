@@ -20,6 +20,6 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/add/user', userRoutes);
+app.use('/user', userRoutes);
 
 module.exports=app;

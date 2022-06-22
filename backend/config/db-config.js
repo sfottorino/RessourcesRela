@@ -3,5 +3,6 @@ module.exports={
     USER: 'root',
     PASSWORD: '',
     DATABASE: 'ressources_relationnelle',
-    DIALECT: 'mysql'
+    DIALECT: 'mysql',
+    SECRET_APP_KEY: 'ejidzadjijHDZAOPDFHZAPODHAZPHDIHPAOIZFPOSqpjoidiojpdqsdijpoqsjdoqifjezioauhfaiyuzgsgdyioazdhozqipjpioQDJIOAZIHDAUZHDGAIZUHDIUQSGDQSYGIOAIZD'
 }
