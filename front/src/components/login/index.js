@@ -7,7 +7,7 @@ const { Component } = require("react");
 class login extends Component{
 
     submit = (values, actions) =>{
-        axios.post('http://127.0.0.1:5001/add/user',JSON.stringify({firstName:'Simon', lastName:'Fottorino', email:'simon.fottorino@gmail.com', password:'testtest'}))
+        axios.post('http://127.0.0.1:5001/connect/user',values)
         .then(response => {
             console.log(response);
         })
