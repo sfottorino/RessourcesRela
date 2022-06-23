@@ -10,5 +10,6 @@ const db = {};
 db.sequelize=sequelize;
 db.models = {};
 db.models.User = require('./user')(sequelize, Sequelize.DataTypes);
+db.models.Verif = require('./verif')(sequelize, Sequelize.DataTypes);
 
 module.exports=db;

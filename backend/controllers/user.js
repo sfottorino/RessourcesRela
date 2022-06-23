@@ -5,6 +5,7 @@ const User = require('../models/index').models.User;
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const config = require('../config/db-config');
+const mailer = require('../mailer/nodeMailer');
 
 const SECRET_APP = config.SECRET_APP_KEY;
 
@@ -13,16 +14,23 @@ const SECRET_APP = config.SECRET_APP_KEY;
 
 exports.createUser = (req, res, next) => { 
     if(req.body){
-        bcrypt.hash(req.body.password,10)
+        bcrypt.hash(req.body.PW,10)
         .then( hash => {
             try {
                 const user= User.build();
                 user.firstName=req.body.firstName;
                 user.lastName=req.body.lastName;
-                user.email=req.body.email;
+                user.email=req.body.mail;
                 user.password=hash;
                 user.save()
-                .then(() => res.status(201).json({message: 'Utilisateur créé !'}))
+                .then(() => {
+                    try {
+                        mailer(user.email, "Création de compte", "Compte créé !");    
+                    } catch (error) {
+                        res.status(402).json({message: 'Erreur de mail!'});
+                    }
+                    res.status(201).json({message: 'Utilisateur créé !'});
+                })
                 .catch(error => res.status(400).json({ error }))
             } catch (error) {
                 console.log(error);
@@ -40,7 +48,7 @@ exports.logUser = (req, res, next) => {
             User.findOne({ where: { email: req.body.mail } })
             .then(user => {
                 if(!user){
-                    return res.status(401).json({error:"Utilisateur inexistant"});
+                    return res.status(401).json({error:"Erreur de connexion"});
                 }
                 bcrypt.compare(req.body.PW, user.password)
                 .then(valid => {

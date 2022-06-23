@@ -19,7 +19,6 @@ class login extends Component{
     }
 
     validate(values){
-        console.log({ values });
         let errors={};
         if(values.PW && values.PW.length < 6){
             errors.PW='Mot de passe trop court';
@@ -69,6 +68,7 @@ class login extends Component{
                                     <div className="d-flex flex-row align-items-center justify-content-center w-100">
                                         <button type="submit" className="btn shadow mt-15" value="Se connecter" disabled={ isSubmitting }>Se connecter</button> 
                                     </div>
+                                    
                                 </div>            
                             </div>
                         </div>

@@ -1,14 +1,9 @@
 import React, {useState} from "react";
 import { HeroContainer, HeroBg, HeroContent, HeroH1, HeroP, HeroBtnWrapper,ArrowForward, ArrowRight, VideoBg } from './heroElements';
-import { Button } from '../buttonElement';
 import Video from '../../videos/video.mp4';
+import Navigate from "./nav";
 
 const HeroSection = () => {
-    const [hover, setHover] = useState(false) 
-
-    const onHover = () => {
-         setHover(!hover);
-    }
 
     return (
       <HeroContainer>
@@ -21,11 +16,10 @@ const HeroSection = () => {
                     L'apprentissage est la seule chose que l'esprit n'épuise jamais, ne craint jamais et ne regrette jamais.
                     </HeroP>
                 <HeroBtnWrapper>
-                    <Button to='signup' onMouseEnter={onHover} onMouseLeave={onHover}>Se connecter {hover ? <ArrowForward/>: <ArrowRight/>}</Button>
+                    <Navigate/>
                 </HeroBtnWrapper>
             </HeroContent>
       </HeroContainer>
-
     );
 };
 
