@@ -4,6 +4,7 @@ import Home from './pages';
 import HeroSection from './components/heroSection';
 import Login from './components/login/index'
 import Create from './components/newAccount';
+import Validate from './components/validate/index';
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
       </Route>
       <Route path="/signup">
         <Create/>
+      </Route>
+      <Route path="/validation/:token">
+        <Validate/>
       </Route>
     </Router>
   );

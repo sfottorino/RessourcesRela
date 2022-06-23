@@ -1,4 +1,5 @@
 const sequelize = require(".");
+const Verif = require('./verif');
 
 
 module.exports = (sequelize, DataTypes) => {
@@ -20,7 +21,12 @@ module.exports = (sequelize, DataTypes) => {
             password: {
             type: DataTypes.STRING,
             allowNull: false
-        }
+        },
+            isVerified: {
+                type: DataTypes.BOOLEAN,
+                allowNull: false,
+                defaultValue: false
+            }
     }, {
         freezeTableName: true
     });

@@ -6,4 +6,6 @@ router.post('/add', userCtrl.createUser);
 
 router.post('/connect', userCtrl.logUser);
 
+router.post('/validate/:token', userCtrl.validateUser);
+
 module.exports= router;

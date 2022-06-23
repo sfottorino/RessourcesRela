@@ -12,4 +12,7 @@ db.models = {};
 db.models.User = require('./user')(sequelize, Sequelize.DataTypes);
 db.models.Verif = require('./verif')(sequelize, Sequelize.DataTypes);
 
+db.models.User.hasOne(db.models.Verif);
+db.models.Verif.belongsTo(db.models.User, {foreignKey: 'userId'});
+
 module.exports=db;
