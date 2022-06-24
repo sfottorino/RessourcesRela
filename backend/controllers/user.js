@@ -15,6 +15,9 @@ const SECRET_APP = config.SECRET_APP_KEY;
 
 exports.createUser = (req, res, next) => { 
     if(req.body){
+        if(req.body.PW.length < 6){
+            return res.status(401).json({message:'Mot de passe trop court'});
+        }
         bcrypt.hash(req.body.PW,10)
         .then( hash => {
             try {
@@ -123,7 +126,7 @@ exports.validateUser = (req, res, next) => {
             })
         })
         .catch(error => {
-            return res.status(401).json({error});
+            return res.status(401).json({error:'Token invalide'});
         })
     }else{
         return res.status(401).json({error: 'Absence de token'});

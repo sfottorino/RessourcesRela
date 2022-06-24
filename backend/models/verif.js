@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
 
     const Verif = sequelize.define('verif', {
             token: {
-            type: DataTypes.STRING(100),
+            type: DataTypes.STRING(300),
             allowNull: false
         },
         userId:{

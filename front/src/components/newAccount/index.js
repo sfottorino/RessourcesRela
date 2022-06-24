@@ -1,28 +1,36 @@
 import { Formik } from 'formik';
 import * as axios from 'axios';
+import { Redirect } from 'react-router-dom';
+import { Component } from 'react';
 
-const { Component } = require("react");
 
 
 class create extends Component{
 
-    test={};
+    constructor(props){
+        super(props);
+        this.state={
+            errorMessage:'',
+            created:false
+        }
+    }
 
     submit = (values, actions) =>{
         axios.post('http://127.0.0.1:5001/user/add',values)
         .then(response => {
-            console.log(response);
+            this.setState({created: true});
         })
         .catch( err => { 
             if(err.response.status=="400"){
+                this.setState({errorMessage:'Utilisateur déjà existant'});
+            }else{
                 console.log(err);
-                let test={};
-                test.msg="Utilisateur déjà existant";
-                console.log(test.msg);
+                this.setState({errorMessage:err.response.data.message});
             }
         })
         actions.setSubmitting(false);
     }
+    
 
     validate(values){
         let errors={};
@@ -105,7 +113,13 @@ class create extends Component{
                                         ) : null}
                                 {errors.mail ? (
                                             <div className="danger d-flex justify-content-center">{ errors.mail }</div>
-                                        ) : null}                        
+                                        ) : null}
+                                {this.state.errorMessage ? (
+                                            <div className="danger d-flex justify-content-center">{ this.state.errorMessage }</div>
+                                        ) : null}
+                                {this.state.created ? (
+                                            <Redirect to="/userValid"/>
+                                        ) : null}                                                      
                             </div>
                         </div>
                     </form>

@@ -140,6 +140,15 @@ input{
   margin-left: 15px;
 }
 
+.btn_v{
+  background-color: #004aad;
+  border-radius: var(--border-radius);
+  padding: 5px;
+  color: white;
+  height: 35px;
+  width: 150px;
+}
+
 
 .btn:hover{
   background-color: #B4C5E4;
@@ -150,6 +159,14 @@ input{
 }
 
 .btn_c:hover{
+  background-color: #B4C5E4;
+  transition: background-color 0.4s;
+  color: black;
+  transition: color 0.4s;
+  cursor: pointer;
+}
+
+.btn_v:hover{
   background-color: #B4C5E4;
   transition: background-color 0.4s;
   color: black;
