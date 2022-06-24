@@ -16,11 +16,15 @@ db.models.User_Has_Role = require('./user_has_role')(sequelize, Sequelize.DataTy
 db.models.Type = require('./type')(sequelize, Sequelize.DataTypes);
 db.models.Ressource = require('./ressource')(sequelize, Sequelize.DataTypes);
 db.models.Comment = require('./comment')(sequelize, Sequelize.DataTypes);
+db.models.Reset = require('./reset')(sequelize, Sequelize.DataTypes);
 
 
 
 db.models.User.hasOne(db.models.Verif);
 db.models.Verif.belongsTo(db.models.User, {foreignKey: 'userId'});
+
+db.models.User.hasOne(db.models.Reset);
+db.models.Reset.belongsTo(db.models.User, {foreignKey: 'userId'});
 
 db.models.Ressource.belongsTo(db.models.User);
 db.models.User.hasMany(db.models.Ressource, {foreignKey: 'userId'});

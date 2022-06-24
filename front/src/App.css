@@ -210,7 +210,14 @@ input{
   margin-top: 4%;
 }
 
+.btna{
+  background-color: white;
+  border: none;
+}
 
+.btna:hover{
+  cursor: pointer;
+}
 
 
 

@@ -9,7 +9,7 @@ app.use(bp.urlencoded({ extended: true }));
 
 
 (async () => {
-  await db.sequelize.sync();
+  await db.sequelize.sync({force: true});
 })();
 
 

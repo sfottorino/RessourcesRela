@@ -26,6 +26,9 @@ function App() {
       <Route path="/userValid">
         <Message/>
       </Route>
+      <Route path="/resetPW">
+        <Message/>
+      </Route>
     </Router>
   );
 }

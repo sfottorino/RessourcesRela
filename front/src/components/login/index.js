@@ -1,10 +1,17 @@
 import { Formik } from 'formik';
 import * as axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 const { Component } = require("react");
 
 
 class login extends Component{
+
+    constructor(props){
+        this.state={
+            clicked:false
+        }
+    }
 
     submit = (values, actions) =>{
         axios.post('http://127.0.0.1:5001/user/connect',values)
@@ -16,6 +23,10 @@ class login extends Component{
             console.log(err.response.data.error);
         })
         actions.setSubmitting(false);
+    }
+
+    oubli = () =>{
+        this.setState({clicked:true});
     }
 
     validate(values){
@@ -62,9 +73,14 @@ class login extends Component{
                                             <input type="password" name="PW" values={values.PW} onChange={handleChange} onBlur={handleBlur} className="shadow w-100"></input>
                                         </div>
                                     </div>
+                                    <button className='btna mt-15' onClick={this.oubli}>Mot de passe oublié?</button>
                                     {errors.PW ? (
                                             <div className="danger d-flex justify-content-center">{ errors.PW }</div>
                                         ) : null}
+
+                                    {this.state.clicked ? (
+                                            <Redirect to="/resetPW"/>
+                                        ) : null} 
                                     <div className="d-flex flex-row align-items-center justify-content-center w-100">
                                         <button type="submit" className="btn shadow mt-15" value="Se connecter" disabled={ isSubmitting }>Se connecter</button> 
                                     </div>
