@@ -1,5 +1,4 @@
 const sequelize = require(".");
-const Verif = require('./verif');
 
 
 module.exports = (sequelize, DataTypes) => {
