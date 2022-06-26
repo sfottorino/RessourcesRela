@@ -2,6 +2,7 @@ const express = require('express');
 const db = require('./models/index');
 const app=express();
 const userRoutes = require('./routes/user');
+const ressourceRoutes = require('./routes/ressource');
 const bp = require('body-parser');
 
 app.use(bp.json());
@@ -21,5 +22,6 @@ app.use((req, res, next) => {
 });
 
 app.use('/user', userRoutes);
+app.use('/ressource', ressourceRoutes);
 
 module.exports=app;

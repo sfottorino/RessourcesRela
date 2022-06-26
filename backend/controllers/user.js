@@ -1,6 +1,3 @@
-// const sequelize = require(".");
-// const DataTypes = require("sequelize/types");
-// (sequelize, DataTypes)
 const User = require('../models/index').models.User;
 const Verif = require('../models/index').models.Verif;
 const Reset = require('../models/index').models.Reset;

@@ -1,5 +1,5 @@
 import React from 'react';
-import isAdmin from '../../services/isAdmin';
+import getCurrentId from '../../services/getCurrentId';
 import axios from 'axios';
 import authHeaders from '../../services/auth-header';
 import SideMenu from './sideMenu';
@@ -12,7 +12,7 @@ class accueil extends Component{
     constructor(props){
         super(props);
         this.state={
-            admin:false,
+            admin:false
         }
     }
 
@@ -25,7 +25,7 @@ class accueil extends Component{
             })
             .catch(err => {
                 return false;
-            });
+            });  
     }
 
 
@@ -33,7 +33,7 @@ class accueil extends Component{
         return(
             <div className='d-flex flex-row row-nowrap flex-fill border'>
                 <div className='d-flex flex-column w-20'>
-                    <SideMenu/>
+                    <SideMenu id={getCurrentId()}/>
                 </div>
                 <div className='d-flex flex-column align-items-center flex-fill'>
                     <h3 className='mt-15'>Bienvenue sur l'accueil 😊</h3>
