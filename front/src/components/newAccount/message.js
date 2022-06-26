@@ -18,10 +18,12 @@ class message extends Component{
 
 
     render(){
+        const msg = this.props.location ? this.props.location.state.msg : 'Votre demande a été réceptionnée';
+        const title= this.props.location ? this.props.location.state.title : 'Pensez à consulter vos mails ! ✉'
         return(
             <div className='d-flex flex-column flex-fill border align-items-center'>
-                <h3 className='mt-15'>Pensez à consulter vos mails ! ✉</h3>
-                <p className='mt-15'>Vous avez reçu un mail pour vérifier votre compte sur votre adresse mail !</p>
+                <h3 className='mt-15'>{title}</h3>
+                <p className='mt-15'> {msg}</p>
                 <button type="button" className='btn_v mt-15' onClick={this.handleClick}>
                     Menu
                 </button>

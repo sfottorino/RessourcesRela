@@ -1,6 +1,8 @@
 import { Formik } from 'formik';
 import * as axios from 'axios';
 import { Redirect } from 'react-router-dom';
+import authHeader from '../../services/auth-header';
+import isLoggedIn from '../../services/isLoggedIn';
 
 const { Component } = require("react");
 
@@ -8,19 +10,27 @@ const { Component } = require("react");
 class login extends Component{
 
     constructor(props){
+        super(props);
         this.state={
-            clicked:false
+            clicked:false,
+            errorMessage:'',
+            isLogged:false
         }
     }
 
     submit = (values, actions) =>{
         axios.post('http://127.0.0.1:5001/user/connect',values)
         .then(response => {
-            console.log(response);
+            localStorage.setItem("user", JSON.stringify(response.data));
+            this.setState({isLogged: true});
+            window.location.reload();
         })
-        .catch( err => { 
-            console.log(err.response.status);
-            console.log(err.response.data.error);
+        .catch( err => {
+            if(err.response.data.error.name){
+                this.setState({errorMessage:'Erreur'});
+            }else{
+                this.setState({errorMessage:err.response.data.error});
+            }
         })
         actions.setSubmitting(false);
     }
@@ -80,7 +90,15 @@ class login extends Component{
 
                                     {this.state.clicked ? (
                                             <Redirect to="/resetPW"/>
-                                        ) : null} 
+                                        ) : null}
+
+                                    {this.state.isLogged ? (
+                                            <Redirect to="/accueil"/>
+                                        ) : null}   
+                                        
+                                    {this.state.errorMessage ? (
+                                            <div className="danger d-flex justify-content-center">{ this.state.errorMessage }</div>
+                                        ) : null}    
                                     <div className="d-flex flex-row align-items-center justify-content-center w-100">
                                         <button type="submit" className="btn shadow mt-15" value="Se connecter" disabled={ isSubmitting }>Se connecter</button> 
                                     </div>

@@ -6,6 +6,10 @@ import Login from './components/login/index'
 import Create from './components/newAccount';
 import Validate from './components/validate/index';
 import Message from './components/newAccount/message';
+import Reset from './components/reset/index';
+import Pw from './components/reset/resetPW';
+import Accueil from './components/accueil';
+import Deco from './components/login/logout';
 
 function App() {
   return (
@@ -27,7 +31,16 @@ function App() {
         <Message/>
       </Route>
       <Route path="/resetPW">
-        <Message/>
+        <Reset/>
+      </Route>
+      <Route path="/recup/:token">
+        <Pw/>
+      </Route>
+      <Route path="/accueil">
+        <Accueil/>
+      </Route>
+      <Route path="/logOut">
+        <Deco/>
       </Route>
     </Router>
   );

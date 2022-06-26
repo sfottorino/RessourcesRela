@@ -12,12 +12,19 @@ import {
   NavBtnLink,
 } from "./navbarElements";
 
+import isLoggedIn from '../../services/isLoggedIn';
+
+
 const Navbar = ({ toggle }) => {
   return (
     <>
       <Nav>
         <NavbarContainer>
-          <NavLogo to="/">RE</NavLogo>
+        {!isLoggedIn() ? (
+            <NavLogo to="/">RE</NavLogo>
+          ):(
+            <NavLogo to="/accueil">RE</NavLogo>
+          )}
           <MobileIcon onClick={toggle}>
             <FaBars />
           </MobileIcon>
@@ -35,9 +42,15 @@ const Navbar = ({ toggle }) => {
               <NavLinks to="signup">Support</NavLinks>
             </NavItem>
           </NavMenu>
-          <NavBtn>
-            <NavBtnLink to="signin">Se connecter</NavBtnLink>
-          </NavBtn>
+          {!isLoggedIn() ? (
+            <NavBtn>
+              <NavBtnLink to="signin">Se connecter</NavBtnLink>
+            </NavBtn>
+          ):(
+            <NavBtn>
+              <NavBtnLink to="logOut">Se déconnecter</NavBtnLink>
+            </NavBtn>
+          )}
         </NavbarContainer>
       </Nav>
     </>

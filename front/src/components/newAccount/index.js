@@ -118,8 +118,8 @@ class create extends Component{
                                             <div className="danger d-flex justify-content-center">{ this.state.errorMessage }</div>
                                         ) : null}
                                 {this.state.created ? (
-                                            <Redirect to="/userValid"/>
-                                        ) : null}                                                      
+                                            <Redirect to={{ pathname:'/userValid', state:{msg:'Un mail de vérification vous a été envoyé, veuillez le consulter svp'}}}/>
+                                        ) : null}                                                            
                             </div>
                         </div>
                     </form>

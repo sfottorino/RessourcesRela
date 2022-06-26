@@ -203,7 +203,7 @@ input{
 
 .title{
   border-bottom: 1px solid gray;
-  height: 6%;
+  height: 40px;
 }
 
 .mt-auto{
@@ -219,6 +219,48 @@ input{
   cursor: pointer;
 }
 
+.right{
+  border-right: 1px solid gray;
+  margin: 15px;
+}
+
+.row-nowrap{
+  flex-wrap: nowrap;
+}
+
+.w-20{
+  width: 20%;
+}
+
+.add{
+  border-radius: 5px;
+  box-shadow: var(--box-shadow);
+  border: none;
+  text-align: center;
+  line-height: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  color: white;
+  justify-content: space-around;
+  background-color: #004aad;
+  width: 70%;
+}
+
+.add:hover{
+  background-color: #B4C5E4;
+  transition: background-color 0.4s;
+  color: black;
+  transition: color 0.4s;
+  cursor: pointer;
+}
+
+
+.mr-10{
+  margin-right: 10px;
+}
 
 
 
